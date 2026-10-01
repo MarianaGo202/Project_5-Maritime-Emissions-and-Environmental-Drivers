@@ -1,0 +1,15 @@
+# Python
+.venv/
+.gitignore/.venv/
+
+# Large scientific data
+*.nc
+*.nc4
+*.h5
+*.hdf5
+
+# Local Git backup
+.git_backup/
+
+data/emissions/L01dA_2013_global.csv
+data/emissions/OECD.SDD.NAD.SEEA,DSD_MARITIME_TRANSPORT@DF_MARITIME_TRANSPORT.csv
