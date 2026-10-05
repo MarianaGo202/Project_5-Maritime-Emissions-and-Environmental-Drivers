@@ -31,7 +31,6 @@ def extract_current():
     df["TIME_PERIOD"] = df["date"].dt.strftime("%Y-%m")
     return df[["TIME_PERIOD", "uo_mean", "vo_mean", "current_speed_ms"]]
 
-
 def monthly_mean_wind():
     wind = pd.read_csv(WIND_CSV)
     monthly = wind.groupby("TIME_PERIOD", as_index=False)[["u10_mean", "v10_mean"]].mean()
