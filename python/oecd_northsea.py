@@ -13,7 +13,6 @@ INPUT_CSV = (
 OUTPUT_TOTAL_CSV = BASE_DIR / "oecd_northsea_monthly_co2.csv"
 OUTPUT_BY_COUNTRY_CSV = BASE_DIR / "oecd_northsea_monthly_co2_by_country.csv"
 
-# Countries bordering the North Sea
 NORTH_SEA_COUNTRIES = [
     "Netherlands",
     "Belgium",
@@ -23,14 +22,8 @@ NORTH_SEA_COUNTRIES = [
     "Norway",
 ]
 
-# Keep the aggregate across all vessel types
 VESSEL_FILTER = "ALL_VESSELS"
-
-# Territorial emissions only (domestic + international traffic
-# within national waters) — excludes other reporting categories
-# mixed into the same OECD table
 TERRITORIAL_SOURCES = ["TER_DOM", "TER_INT"]
-
 POLLUTANT = "CO2"
 
 def load_filtered_emissions() -> pd.DataFrame:
