@@ -21,7 +21,6 @@ cat("(DW close to 2 = no autocorrelation; well below 1.5 signals\n")
 cat("positive autocorrelation -- treat the regression p-values above\n")
 cat("as optimistic, not as the final word.)\n")
 
-# Lag analysis: does last month's env_index predict this month's CO2
 df$env_index_lag1 <- lag(df$env_index, 1)
 df_lag <- df %>% filter(!is.na(env_index_lag1))
 
