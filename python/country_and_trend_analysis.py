@@ -4,7 +4,6 @@ from scipy import stats
 BY_COUNTRY_CSV = "outputs/processed/oecd_northsea_monthly_co2_by_country.csv"
 COMBINED_CSV = "outputs/processed/northsea_monthly_combined_with_index.csv"
 
-
 def per_country_correlation():
     by_country = pd.read_csv(BY_COUNTRY_CSV)
     combined = pd.read_csv(COMBINED_CSV)
@@ -18,7 +17,6 @@ def per_country_correlation():
     result = pd.DataFrame(rows).sort_values("r")
     print(result.to_string(index=False))
     return result
-
 
 def yearly_trend():
     combined = pd.read_csv(COMBINED_CSV)
@@ -42,7 +40,6 @@ def yearly_trend():
     print(pct_change.round(1))
     return yearly_total
 
-
 def coefficient_of_variation():
     by_country = pd.read_csv(BY_COUNTRY_CSV)
     cv = by_country.groupby("Reference area")["co2_tonnes"].agg(["mean", "std"])
@@ -52,7 +49,6 @@ def coefficient_of_variation():
     print("\nCoefficient of variation per country (higher = more volatile month-to-month)")
     print(cv.round(4))
     return cv
-
 
 if __name__ == "__main__":
     per_country_correlation()
