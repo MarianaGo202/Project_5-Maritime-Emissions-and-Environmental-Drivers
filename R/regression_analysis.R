@@ -10,11 +10,9 @@ df$month_sin <- sin(2 * pi * df$month / 12)
 df$month_cos <- cos(2 * pi * df$month / 12)
 df <- df %>% arrange(date)
 
-# Simple correlation
 cat("Simple correlation (Pearson)\n")
 print(cor(df[, c("co2_tonnes", "wind_speed_ms", "current_speed_ms")]))
 
-# Multiple regression: CO2 ~ wind + current + seasonality
 cat("\nMultiple regression: CO2 ~ wind + current + seasonality\n")
 model_full <- lm(co2_tonnes ~ wind_speed_ms + current_speed_ms + month_sin + month_cos, data = df)
 print(summary(model_full))
@@ -24,7 +22,6 @@ print(vif(model_full))
 cat("(VIF > 5 signals that wind and current are too correlated with each\n")
 cat("other for the multiple regression to separate their individual effect.)\n")
 
-# Simple regressions, for comparison against the multiple model
 cat("\nSimple regression: CO2 ~ wind + seasonality\n")
 model_wind <- lm(co2_tonnes ~ wind_speed_ms + month_sin + month_cos, data = df)
 print(summary(model_wind))
@@ -33,7 +30,6 @@ cat("\nSimple regression: CO2 ~ current + seasonality\n")
 model_current <- lm(co2_tonnes ~ current_speed_ms + month_sin + month_cos, data = df)
 print(summary(model_current))
 
-# Plots
 p1 <- ggplot(df, aes(x = date, y = co2_tonnes)) +
   geom_line(color = "firebrick") +
   labs(title = "Monthly CO2 - North Sea", x = NULL, y = "CO2 (tonnes)") +
